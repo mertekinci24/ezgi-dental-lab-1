@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Ezgi Dental Palette */
+  --primary: #006D77; /* Deep Teal - Professional & Calming */
+  --primary-light: #83C5BE;
+  --primary-dark: #004D55;
+
+  --secondary: #E29578; /* Terracotta/Soft Gold accent - Warmth */
+  --secondary-light: #FFDDD2;
+
+  --accent: #EDF6F9; /* Very light blue/grey for backgrounds */
+  --surface: #FFFFFF;
+  --surface-alt: #F8F9FA;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
+    --surface: #1a1a1a;
+    --surface-alt: #262626;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}

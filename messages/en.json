@@ -1,0 +1,63 @@
+{
+  "HomePage": {
+    "title": "Ezgi Dental Clinic",
+    "subtitle": "Strategic & Sustainable Dental Solutions",
+    "description": "We combine cutting-edge technology with eco-friendly practices to deliver precision dental restorations. Partner with a lab that cares about the future.",
+    "getStarted": "Partner With Us",
+    "features": {
+      "precision": {
+        "title": "Digital Precision",
+        "desc": "CAD/CAM workflows ensuring 99.9% fit accuracy."
+      },
+      "sustainability": {
+        "title": "Eco-Conscious",
+        "desc": "Zero-waste protocols and biocompatible materials."
+      },
+      "speed": {
+        "title": "Rapid Turnaround",
+        "desc": "48-hour express delivery for digital impressions."
+      }
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "portal": "Dentist Portal"
+  },
+  "Portal": {
+    "welcome": "Welcome back, Dr. Yilmaz",
+    "activeCases": "Active Cases",
+    "completedCases": "Completed (Month)",
+    "pendingActions": "Pending Actions",
+    "newCase": "New Case Entry",
+    "recentActivity": "Recent Activity",
+    "caseId": "Case ID",
+    "patient": "Patient",
+    "status": "Status",
+    "dueDate": "Due Date",
+    "statuses": {
+      "received": "Received",
+      "design": "CAD Design",
+      "production": "Production",
+      "quality": "Quality Control",
+      "shipped": "Shipped"
+    },
+    "NewCase": {
+      "title": "New Case Submission",
+      "patientName": "Patient Name",
+      "toothNumber": "Tooth Number",
+      "restorationType": "Restoration Type",
+      "shade": "Shade",
+      "notes": "Notes",
+      "upload": "Upload Digital Impressions (STL/PLY)",
+      "submit": "Submit Case",
+      "types": {
+        "crown": "Zirconia Crown",
+        "bridge": "Bridge",
+        "implant": "Implant Abutment",
+        "veneer": "E-max Veneer"
+      }
+    }
+  }
+}

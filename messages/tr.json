@@ -1,0 +1,63 @@
+{
+    "HomePage": {
+        "title": "Ezgi Diş Kliniği",
+        "subtitle": "Stratejik ve Sürdürülebilir Diş Çözümleri",
+        "description": "En son teknolojiyi çevre dostu uygulamalarla birleştirerek hassas diş restorasyonları sunuyoruz. Geleceği düşünen bir laboratuvarla ortak olun.",
+        "getStarted": "Bizimle Çalışın",
+        "features": {
+            "precision": {
+                "title": "Dijital Hassasiyet",
+                "desc": "%99.9 uyum doğruluğu sağlayan CAD/CAM iş akışları."
+            },
+            "sustainability": {
+                "title": "Çevre Bilinci",
+                "desc": "Sıfır atık protokolleri ve biyouyumlu malzemeler."
+            },
+            "speed": {
+                "title": "Hızlı Teslimat",
+                "desc": "Dijital ölçüler için 48 saatte ekspres teslimat."
+            }
+        }
+    },
+    "Navigation": {
+        "home": "Ana Sayfa",
+        "services": "Hizmetler",
+        "about": "Hakkımızda",
+        "portal": "Diş Hekimi Portalı"
+    },
+    "Portal": {
+        "welcome": "Hoşgeldiniz, Dt. Yılmaz",
+        "activeCases": "Aktif Vakalar",
+        "completedCases": "Tamamlanan (Ay)",
+        "pendingActions": "Bekleyen İşlemler",
+        "newCase": "Yeni Vaka Girişi",
+        "recentActivity": "Son Hareketler",
+        "caseId": "Vaka No",
+        "patient": "Hasta",
+        "status": "Durum",
+        "dueDate": "Teslim Tarihi",
+        "statuses": {
+            "received": "Teslim Alındı",
+            "design": "CAD Tasarım",
+            "production": "Üretim",
+            "quality": "Kalite Kontrol",
+            "shipped": "Kargolandı"
+        },
+        "NewCase": {
+            "title": "Yeni Vaka Girişi",
+            "patientName": "Hasta Adı Soyadı",
+            "toothNumber": "Diş Numarası",
+            "restorationType": "Restorasyon Tipi",
+            "shade": "Renk (Vita)",
+            "notes": "Notlar",
+            "upload": "Dijital Ölçü Yükle (STL/PLY)",
+            "submit": "Vakayı Gönder",
+            "types": {
+                "crown": "Zirkonyum Kron",
+                "bridge": "Köprü",
+                "implant": "İmplant Abutment",
+                "veneer": "E-max Lamina"
+            }
+        }
+    }
+}
