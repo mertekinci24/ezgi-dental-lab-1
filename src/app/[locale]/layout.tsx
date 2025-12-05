@@ -19,8 +19,7 @@ export const metadata: Metadata = {
   description: "Strategic & Sustainable Dental Solutions",
 };
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 
 export default async function RootLayout({
   children,
@@ -38,11 +37,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground flex flex-col min-h-screen`}
       >
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>

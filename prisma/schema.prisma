@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Tenant {
+  id        String   @id @default(uuid())
+  name      String
+  type      String   // "CLINIC" | "LAB"
+  users     User[]
+  patients  Patient[]
+  cases     Case[]
+}
+
+model User {
+  id        String  @id @default(uuid())
+  email     String  @unique
+  password  String  // Demo için düz metin veya basit hash
+  name      String
+  role      String  // "DENTIST" | "LAB_ADMIN"
+  tenantId  String
+  tenant    Tenant  @relation(fields: [tenantId], references: [id])
+  cases     Case[]
+  auditLogs AuditLog[]
+}
+
+model Patient {
+  id        String   @id @default(uuid())
+  fullName  String
+  gender    String
+  dob       DateTime?
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  cases     Case[]
+}
+
+model Case {
+  id            String   @id @default(uuid())
+  caseNumber    Int      // @default(autoincrement()) removed for SQLite compatibility
+  status        String   @default("SUBMITTED") // DRAFT, SUBMITTED, IN_PRODUCTION
+  patientName   String   // Hızlı erişim için denormalize
+  
+  // Relations
+  dentistId     String
+  dentist       User     @relation(fields: [dentistId], references: [id])
+  tenantId      String
+  tenant        Tenant   @relation(fields: [tenantId], references: [id])
+  patientId     String?
+  patient       Patient? @relation(fields: [patientId], references: [id])
+
+  // JSON Data (Smart Wizard)
+  odontogram    String   // JSON string
+  material      String   // JSON string
+  preferences   String   // JSON string
+  
+  dueDate       DateTime
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  attachments   Attachment[]
+  auditLogs     AuditLog[]
+}
+
+model Attachment {
+  id        String   @id @default(uuid())
+  fileName  String
+  fileType  String
+  url       String
+  caseId    String
+  case      Case     @relation(fields: [caseId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  action    String
+  details   String?
+  caseId    String
+  case      Case     @relation(fields: [caseId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}

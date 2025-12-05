@@ -1,8 +1,10 @@
 import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import { auth, signOut } from '@/auth';
 
-export default function Navbar() {
-    const t = useTranslations('Navigation');
+export default async function Navbar() {
+    const t = await getTranslations('Navigation');
+    const session = await auth();
 
     return (
         <nav className="bg-surface/90 backdrop-blur-md border-b border-primary/10 sticky top-0 z-50">
@@ -27,12 +29,29 @@ export default function Navbar() {
                         <Link href="/about" className="text-foreground/80 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">
                             {t('about')}
                         </Link>
+                        {session?.user && (
+                            <Link href="/portal/cases" className="text-foreground/80 hover:text-primary px-3 py-2 text-sm font-medium transition-colors">
+                                {t('my_cases')}
+                            </Link>
+                        )}
                         <Link
                             href="/portal"
                             className="bg-primary text-white hover:bg-primary-dark px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg shadow-primary/20"
                         >
                             {t('portal')}
                         </Link>
+                        {session?.user && (
+                            <form
+                                action={async () => {
+                                    'use server';
+                                    await signOut({ redirectTo: '/login' });
+                                }}
+                            >
+                                <button type="submit" className="text-foreground/80 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors">
+                                    {t('logout')}
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

@@ -23,41 +23,130 @@
         "home": "Ana Sayfa",
         "services": "Hizmetler",
         "about": "Hakkımızda",
-        "portal": "Diş Hekimi Portalı"
+        "portal": "Diş Hekimi Portalı",
+        "dashboard": "Panel",
+        "my_cases": "Vakalarım",
+        "logout": "Çıkış Yap"
     },
     "Portal": {
-        "welcome": "Hoşgeldiniz, Dt. Yılmaz",
+        "welcome": "Hoşgeldiniz",
         "activeCases": "Aktif Vakalar",
-        "completedCases": "Tamamlanan (Ay)",
+        "completedCases": "Tamamlanan Vakalar",
         "pendingActions": "Bekleyen İşlemler",
-        "newCase": "Yeni Vaka Girişi",
-        "recentActivity": "Son Hareketler",
+        "newCase": "Yeni Vaka",
+        "recentActivity": "Son Aktiviteler",
         "caseId": "Vaka No",
         "patient": "Hasta",
+        "doctor": "Hekim",
+        "restoration": "Restorasyon",
+        "actions": "İşlemler",
         "status": "Durum",
         "dueDate": "Teslim Tarihi",
-        "statuses": {
-            "received": "Teslim Alındı",
-            "design": "CAD Tasarım",
-            "production": "Üretim",
-            "quality": "Kalite Kontrol",
-            "shipped": "Kargolandı"
+        "dashboard": "Panel",
+        "my_cases": "Vakalarım",
+        "logout": "Çıkış Yap",
+        "statusMap": {
+            "SUBMITTED": "Gönderildi",
+            "RECEIVED": "Kabul Edildi",
+            "DESIGN": "Tasarımda",
+            "PRODUCTION": "Üretimde",
+            "COMPLETED": "Tamamlandı",
+            "SHIPPED": "Kargolandı",
+            "DRAFT": "Taslak"
+        },
+        "menu": {
+            "operations": "Operasyonlar",
+            "shipping": "Sevkiyat / Kargo",
+            "finance": "Finans",
+            "invoices": "Faturalar",
+            "account": "Cari Hesap",
+            "pricing": "Fiyat Listesi",
+            "management": "Yönetim",
+            "clinicSettings": "Klinik Ayarları",
+            "doctors": "Hekimler",
+            "profile": "Profilim"
         },
         "NewCase": {
-            "title": "Yeni Vaka Girişi",
-            "patientName": "Hasta Adı Soyadı",
-            "toothNumber": "Diş Numarası",
-            "restorationType": "Restorasyon Tipi",
-            "shade": "Renk (Vita)",
-            "notes": "Notlar",
-            "upload": "Dijital Ölçü Yükle (STL/PLY)",
-            "submit": "Vakayı Gönder",
-            "types": {
-                "crown": "Zirkonyum Kron",
-                "bridge": "Köprü",
-                "implant": "İmplant Abutment",
-                "veneer": "E-max Lamina"
+            "title": "Yeni Vaka Oluştur",
+            "steps": {
+                "patient": "Hasta Bilgileri",
+                "odontogram": "Diş Seçimi",
+                "material": "Materyal & Renk",
+                "preferences": "Kritik Tercihler",
+                "review": "Özet & Onay"
+            },
+            "patientInfo": {
+                "fullName": "Hasta Adı Soyadı",
+                "gender": "Cinsiyet",
+                "genderOptions": {
+                    "male": "Erkek (Köşeli Form)",
+                    "female": "Kadın (Oval Form)"
+                },
+                "age": "Yaş / Doğum Tarihi",
+                "caseType": "Vaka Türü",
+                "types": {
+                    "fixed": "Sabit Protez (Kron/Köprü)",
+                    "removable": "Hareketli Protez",
+                    "implant": "İmplant Üstü"
+                }
+            },
+            "odontogram": {
+                "title": "Tedavi Edilecek Dişleri Seçin (FDI)",
+                "selected": "Seçilen Dişler",
+                "instruction": "Şema üzerinden ilgili dişlere tıklayınız."
+            },
+            "material": {
+                "type": "Materyal Seçimi",
+                "options": {
+                    "zirconia_ml": "Zirkonyum (Multi-Layer)",
+                    "zirconia_cb": "Zirkonyum (Cut-Back)",
+                    "emax_press": "E.max (Press)",
+                    "metal_porcelain": "Metal Porselen (PFM)",
+                    "pmma": "Geçici (PMMA)"
+                },
+                "shadeInfo": "Renk Bilgileri",
+                "bodyShade": "Gövde Rengi (VITA)",
+                "stumpShade": "Güdük Rengi (ND)",
+                "stumpHint": "Tam seramik restorasyonlar için zorunludur."
+            },
+            "preferences": {
+                "occlusion": "Oklüzyon (Kapanış)",
+                "occlusionOpts": {
+                    "none": "Temas Yok (Out of Occlusion)",
+                    "light": "Hafif Temas (Shimstock)",
+                    "tight": "Sıkı Temas"
+                },
+                "contact": "Arayüz Kontağı",
+                "contactOpts": {
+                    "point": "Noktasal",
+                    "broad": "Geniş Yüzeyli",
+                    "passive": "Pasif"
+                },
+                "margin": "Kenar Uyumu (Marjin)",
+                "marginOpts": {
+                    "shoulder": "Basamak (Shoulder)",
+                    "knife": "Bıçak Sırtı (Knife Edge)"
+                },
+                "notes": "Vaka Notları / Özel İstekler",
+                "notesPlaceholder": "Örn: Metal prova istiyorum, Hastanın diş eti hassas..."
+            },
+            "logistics": {
+                "dueDate": "İstenen Teslim Tarihi",
+                "warning": "Minimum üretim süresi 3 iş günüdür."
+            },
+            "actions": {
+                "next": "İleri",
+                "back": "Geri",
+                "submit": "Siparişi Gönder",
+                "submitting": "Gönderiliyor..."
             }
+        },
+        "Files": {
+            "uploadTitle": "Dosya Yükle",
+            "dragDrop": "STL/PLY dosyalarını buraya sürükleyin veya tıklayın",
+            "maxSize": "Dosya başına maks. 50MB",
+            "uploading": "Yükleniyor...",
+            "success": "Yüklendi"
         }
     }
 }

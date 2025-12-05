@@ -23,41 +23,130 @@
     "home": "Home",
     "services": "Services",
     "about": "About Us",
-    "portal": "Dentist Portal"
+    "portal": "Dentist Portal",
+    "dashboard": "Dashboard",
+    "my_cases": "My Cases",
+    "logout": "Sign Out"
   },
   "Portal": {
-    "welcome": "Welcome back, Dr. Yilmaz",
+    "welcome": "Welcome",
     "activeCases": "Active Cases",
-    "completedCases": "Completed (Month)",
+    "completedCases": "Completed Cases",
     "pendingActions": "Pending Actions",
-    "newCase": "New Case Entry",
+    "newCase": "New Case",
     "recentActivity": "Recent Activity",
     "caseId": "Case ID",
     "patient": "Patient",
+    "doctor": "Doctor",
+    "restoration": "Restoration",
+    "actions": "Actions",
     "status": "Status",
     "dueDate": "Due Date",
-    "statuses": {
-      "received": "Received",
-      "design": "CAD Design",
-      "production": "Production",
-      "quality": "Quality Control",
-      "shipped": "Shipped"
+    "dashboard": "Dashboard",
+    "my_cases": "My Cases",
+    "logout": "Logout",
+    "statusMap": {
+      "SUBMITTED": "Submitted",
+      "RECEIVED": "Received",
+      "DESIGN": "In Design",
+      "PRODUCTION": "In Production",
+      "COMPLETED": "Completed",
+      "SHIPPED": "Shipped",
+      "DRAFT": "Draft"
+    },
+    "menu": {
+      "operations": "Operations",
+      "shipping": "Shipping",
+      "finance": "Finance",
+      "invoices": "Invoices",
+      "account": "Current Account",
+      "pricing": "Price List",
+      "management": "Management",
+      "clinicSettings": "Clinic Settings",
+      "doctors": "Doctors",
+      "profile": "My Profile"
     },
     "NewCase": {
-      "title": "New Case Submission",
-      "patientName": "Patient Name",
-      "toothNumber": "Tooth Number",
-      "restorationType": "Restoration Type",
-      "shade": "Shade",
-      "notes": "Notes",
-      "upload": "Upload Digital Impressions (STL/PLY)",
-      "submit": "Submit Case",
-      "types": {
-        "crown": "Zirconia Crown",
-        "bridge": "Bridge",
-        "implant": "Implant Abutment",
-        "veneer": "E-max Veneer"
+      "title": "Create New Case",
+      "steps": {
+        "patient": "Patient Info",
+        "odontogram": "Tooth Selection",
+        "material": "Material & Shade",
+        "preferences": "Preferences",
+        "review": "Review"
+      },
+      "patientInfo": {
+        "fullName": "Full Name",
+        "gender": "Gender",
+        "genderOptions": {
+          "male": "Male (Square Form)",
+          "female": "Female (Oval Form)"
+        },
+        "age": "Age / DOB",
+        "caseType": "Case Type",
+        "types": {
+          "fixed": "Fixed (Crown/Bridge)",
+          "removable": "Removable",
+          "implant": "Implant Supported"
+        }
+      },
+      "odontogram": {
+        "title": "Select Teeth (FDI)",
+        "selected": "Selected Teeth",
+        "instruction": "Click on teeth to select/deselect."
+      },
+      "material": {
+        "type": "Material Selection",
+        "options": {
+          "zirconia_ml": "Zirconia (Multi-Layer)",
+          "zirconia_cb": "Zirconia (Cut-Back)",
+          "emax_press": "E.max (Press)",
+          "metal_porcelain": "PFM",
+          "pmma": "Temporary (PMMA)"
+        },
+        "shadeInfo": "Shade Information",
+        "bodyShade": "Body Shade (VITA)",
+        "stumpShade": "Stump Shade (ND)",
+        "stumpHint": "Required for all-ceramic restorations."
+      },
+      "preferences": {
+        "occlusion": "Occlusion",
+        "occlusionOpts": {
+          "none": "No Contact",
+          "light": "Light Contact",
+          "tight": "Tight Contact"
+        },
+        "contact": "Proximal Contact",
+        "contactOpts": {
+          "point": "Point",
+          "broad": "Broad",
+          "passive": "Passive"
+        },
+        "margin": "Margin Design",
+        "marginOpts": {
+          "shoulder": "Shoulder",
+          "knife": "Knife Edge"
+        },
+        "notes": "Case Notes / Special Requests",
+        "notesPlaceholder": "E.g., Metal try-in required, Sensitive gums..."
+      },
+      "logistics": {
+        "dueDate": "Requested Date",
+        "warning": "Minimum production time is 3 business days."
+      },
+      "actions": {
+        "next": "Next",
+        "back": "Back",
+        "submit": "Submit Order",
+        "submitting": "Submitting..."
       }
+    },
+    "Files": {
+      "uploadTitle": "Upload Files",
+      "dragDrop": "Drag & drop STL/PLY files here or click to upload",
+      "maxSize": "Max 50MB per file",
+      "uploading": "Uploading...",
+      "success": "Uploaded"
     }
   }
 }
