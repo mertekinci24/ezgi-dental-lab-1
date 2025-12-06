@@ -103,18 +103,16 @@ export default function Sidebar({ userRole }: { userRole?: string }) {
                 </div>
 
                 {/* Group 2: Finance */}
-                {showFinance && (
-                    <div>
-                        <p className="px-3 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">
-                            {t('menu.finance')}
-                        </p>
-                        <div className="space-y-1">
-                            {financeItems.map((item) => (
-                                <NavItem key={item.href} item={item} />
-                            ))}
-                        </div>
+                <div>
+                    <p className="px-3 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">
+                        {t('menu.finance')}
+                    </p>
+                    <div className="space-y-1">
+                        {financeItems.map((item) => (
+                            <NavItem key={item.href} item={item} />
+                        ))}
                     </div>
-                )}
+                </div>
 
                 {/* Group 3: Management */}
                 <div>

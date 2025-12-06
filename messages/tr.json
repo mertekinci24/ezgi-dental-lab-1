@@ -1,21 +1,75 @@
 {
     "HomePage": {
-        "title": "Ezgi Diş Kliniği",
-        "subtitle": "Stratejik ve Sürdürülebilir Diş Çözümleri",
-        "description": "En son teknolojiyi çevre dostu uygulamalarla birleştirerek hassas diş restorasyonları sunuyoruz. Geleceği düşünen bir laboratuvarla ortak olun.",
-        "getStarted": "Bizimle Çalışın",
+        "title": "Ezgi Diş Laboratuvarı",
+        "subtitle": "Dijital Hassasiyet, Estetik Mükemmellik",
+        "description": "En son teknolojiyi çevre dostu uygulamalarla birleştirerek hassas diş restorasyonları sunuyoruz.",
+        "getStarted": "Hemen Başlayın",
         "features": {
             "precision": {
                 "title": "Dijital Hassasiyet",
-                "desc": "%99.9 uyum doğruluğu sağlayan CAD/CAM iş akışları."
+                "desc": "%99.9 uyum doğruluğu."
             },
             "sustainability": {
                 "title": "Çevre Bilinci",
-                "desc": "Sıfır atık protokolleri ve biyouyumlu malzemeler."
+                "desc": "Sıfır atık protokolleri."
             },
             "speed": {
                 "title": "Hızlı Teslimat",
-                "desc": "Dijital ölçüler için 48 saatte ekspres teslimat."
+                "desc": "48 saatte ekspres teslimat."
+            }
+        }
+    },
+    "AboutPage": {
+        "title": "Hakkımızda",
+        "subtitle": "20 Yıllık Tecrübe, Geleceğin Teknolojisi",
+        "bio": {
+            "title": "Kurucumuzun Mesajı",
+            "text": "Diş protez sanatına 2005 yılında başlayan yolculuğumuz, bugün en ileri CAD/CAM sistemleri ve 3D yazıcı teknolojileriyle devam ediyor. Ezgi Dental Lab olarak amacımız sadece diş üretmek değil; hekimlerimize teşhis, planlama ve uygulama süreçlerinde 'Çözüm Ortağı' olmaktır. Geleneksel zanaatkarlığın detaycılığını, dijital dünyanın hızıyla birleştiriyoruz."
+        },
+        "mission": {
+            "title": "Misyonumuz",
+            "desc": "Diş hekimlerine en güvenilir, estetik ve hızlı çözümleri sunarak hasta memnuniyetini maksimize etmek."
+        },
+        "vision": {
+            "title": "Vizyonumuz",
+            "desc": "Türkiye'nin en teknolojik ve sürdürülebilir diş laboratuvarı olmak."
+        },
+        "team": "Uzman Kadromuz"
+    },
+    "ServicesPage": {
+        "title": "Hizmetlerimiz",
+        "subtitle": "Kapsamlı Laboratuvar Çözümleri",
+        "marqueeTitle": "Teknoloji & Sanat",
+        "items": {
+            "zirconia": {
+                "title": "Zirkonyum Kronlar",
+                "desc": "Monolitik ve Cut-back seçenekleriyle, ışık geçirgenliği doğal dişe en yakın materyal. 1200 MPa dayanıklılık.",
+                "detail": "Endikasyonlar: Tek kronlar, köprüler, implant üstü yapılar."
+            },
+            "emax": {
+                "title": "E.max Laminate",
+                "desc": "Mükemmel estetik için lityum disilikat cam seramik. Minimal invaziv preparasyonlar için ideal.",
+                "detail": "Endikasyonlar: Veneer, Inlay, Onlay, Ön bölge kronlar."
+            },
+            "implant": {
+                "title": "İmplant Üstü Protezler",
+                "desc": "Custom abutment (Ti-Base) ve hibrit protezler. Tüm majör implant markalarıyla uyumlu kütüphaneler.",
+                "detail": "Seçenekler: Vidalı, Simante, All-on-4, All-on-6."
+            },
+            "digital": {
+                "title": "Dijital Gülüş Tasarımı",
+                "desc": "Tedavi öncesi sanal planlama ve mock-up üretimi. Hastanıza sonucu göstermeden işe başlamayın.",
+                "detail": "Çıktılar: 3D PDF, Video simülasyonu, PMMA Mock-up."
+            },
+            "cadcam": {
+                "title": "CAD/CAM Hizmetleri",
+                "desc": "Laboratuvarlar arası fason kazıma ve tasarım desteği. 5 eksenli tarayıcı ve kazıyıcı parkuru.",
+                "detail": "Formatlar: STL, PLY, OBJ."
+            },
+            "ortho": {
+                "title": "Şeffaf Plaklar",
+                "desc": "Ortodontik tedaviler ve bruksizm için gece plakları. 3D baskı teknolojisi ile hassas uyum.",
+                "detail": "Materyal: Termoplastik, Biocompatible Resin."
             }
         }
     },
@@ -85,7 +139,7 @@
                 "age": "Yaş / Doğum Tarihi",
                 "caseType": "Vaka Türü",
                 "types": {
-                    "fixed": "Sabit Protez (Kron/Köprü)",
+                    "fixed": "Sabit Protez",
                     "removable": "Hareketli Protez",
                     "implant": "İmplant Üstü"
                 }
@@ -112,8 +166,8 @@
             "preferences": {
                 "occlusion": "Oklüzyon (Kapanış)",
                 "occlusionOpts": {
-                    "none": "Temas Yok (Out of Occlusion)",
-                    "light": "Hafif Temas (Shimstock)",
+                    "none": "Temas Yok",
+                    "light": "Hafif Temas",
                     "tight": "Sıkı Temas"
                 },
                 "contact": "Arayüz Kontağı",
@@ -122,13 +176,13 @@
                     "broad": "Geniş Yüzeyli",
                     "passive": "Pasif"
                 },
-                "margin": "Kenar Uyumu (Marjin)",
+                "margin": "Kenar Uyumu",
                 "marginOpts": {
-                    "shoulder": "Basamak (Shoulder)",
-                    "knife": "Bıçak Sırtı (Knife Edge)"
+                    "shoulder": "Basamak",
+                    "knife": "Bıçak Sırtı"
                 },
                 "notes": "Vaka Notları / Özel İstekler",
-                "notesPlaceholder": "Örn: Metal prova istiyorum, Hastanın diş eti hassas..."
+                "notesPlaceholder": "Örn: Metal prova istiyorum..."
             },
             "logistics": {
                 "dueDate": "İstenen Teslim Tarihi",
@@ -137,14 +191,13 @@
             "actions": {
                 "next": "İleri",
                 "back": "Geri",
-                "submit": "Siparişi Gönder",
-                "submitting": "Gönderiliyor..."
+                "submit": "Siparişi Gönder"
             }
         },
         "Files": {
             "uploadTitle": "Dosya Yükle",
-            "dragDrop": "STL/PLY dosyalarını buraya sürükleyin veya tıklayın",
-            "maxSize": "Dosya başına maks. 50MB",
+            "dragDrop": "STL/PLY dosyalarını buraya sürükleyin",
+            "maxSize": "Maks. 50MB",
             "uploading": "Yükleniyor...",
             "success": "Yüklendi"
         }

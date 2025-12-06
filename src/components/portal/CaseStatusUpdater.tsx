@@ -40,6 +40,7 @@ export default function CaseStatusUpdater({ caseId, currentStatus }: Props) {
         } catch (error) {
             console.error(error);
             setStatus(currentStatus);
+            alert("Statü güncellenemedi. Yetkinizi kontrol edin.");
         } finally {
             setIsUpdating(false);
         }

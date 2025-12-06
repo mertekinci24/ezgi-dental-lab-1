@@ -1,21 +1,75 @@
 {
   "HomePage": {
-    "title": "Ezgi Dental Clinic",
-    "subtitle": "Strategic & Sustainable Dental Solutions",
-    "description": "We combine cutting-edge technology with eco-friendly practices to deliver precision dental restorations. Partner with a lab that cares about the future.",
-    "getStarted": "Partner With Us",
+    "title": "Ezgi Dental Laboratory",
+    "subtitle": "Digital Precision, Aesthetic Excellence",
+    "description": "We combine cutting-edge technology with eco-friendly practices to deliver precision dental restorations.",
+    "getStarted": "Get Started",
     "features": {
       "precision": {
         "title": "Digital Precision",
-        "desc": "CAD/CAM workflows ensuring 99.9% fit accuracy."
+        "desc": "99.9% fit accuracy."
       },
       "sustainability": {
         "title": "Eco-Conscious",
-        "desc": "Zero-waste protocols and biocompatible materials."
+        "desc": "Zero-waste protocols."
       },
       "speed": {
-        "title": "Rapid Turnaround",
-        "desc": "48-hour express delivery for digital impressions."
+        "title": "Rapid Delivery",
+        "desc": "48-hour express delivery."
+      }
+    }
+  },
+  "AboutPage": {
+    "title": "About Us",
+    "subtitle": "20 Years of Experience, Future Technology",
+    "bio": {
+      "title": "Founder's Message",
+      "text": "Our journey in the art of dental prosthetics began in 2005 and continues today with the most advanced CAD/CAM systems and 3D printing technologies. As Ezgi Dental Lab, our goal is not just to produce teeth, but to be a 'Solution Partner' to our dentists in diagnosis, planning, and application processes. We combine the detail-oriented nature of traditional craftsmanship with the speed of the digital world."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "desc": "Maximizing patient satisfaction by providing the most reliable, aesthetic, and fast solutions to dentists."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "desc": "To be Turkey's most technological and sustainable dental laboratory."
+    },
+    "team": "Our Expert Team"
+  },
+  "ServicesPage": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive Laboratory Solutions",
+    "marqueeTitle": "Technology & Art",
+    "items": {
+      "zirconia": {
+        "title": "Zirconia Crowns",
+        "desc": "Monolithic and Cut-back options, material closest to natural tooth translucency. 1200 MPa strength.",
+        "detail": "Indications: Single crowns, bridges, implant superstructures."
+      },
+      "emax": {
+        "title": "E.max Laminate",
+        "desc": "Lithium disilicate glass ceramic for perfect aesthetics. Ideal for minimally invasive preparations.",
+        "detail": "Indications: Veneers, Inlay, Onlay, Anterior crowns."
+      },
+      "implant": {
+        "title": "Implant Supported",
+        "desc": "Custom abutment (Ti-Base) and hybrid prostheses. Libraries compatible with all major implant brands.",
+        "detail": "Options: Screw-retained, Cemented, All-on-4, All-on-6."
+      },
+      "digital": {
+        "title": "Digital Smile Design",
+        "desc": "Pre-treatment virtual planning and mock-up production. Don't start work without showing the result to your patient.",
+        "detail": "Outputs: 3D PDF, Video simulation, PMMA Mock-up."
+      },
+      "cadcam": {
+        "title": "CAD/CAM Services",
+        "desc": "Outsourcing milling and design support for laboratories. 5-axis scanner and milling park.",
+        "detail": "Formats: STL, PLY, OBJ."
+      },
+      "ortho": {
+        "title": "Clear Aligners",
+        "desc": "Night guards for orthodontic treatments and bruxism. Precision fit with 3D printing technology.",
+        "detail": "Material: Thermoplastic, Biocompatible Resin."
       }
     }
   },
@@ -38,7 +92,7 @@
     "caseId": "Case ID",
     "patient": "Patient",
     "doctor": "Doctor",
-    "restoration": "Restoration",
+    "restoration": "Restorasyon",
     "actions": "Actions",
     "status": "Status",
     "dueDate": "Due Date",
@@ -128,7 +182,7 @@
           "knife": "Knife Edge"
         },
         "notes": "Case Notes / Special Requests",
-        "notesPlaceholder": "E.g., Metal try-in required, Sensitive gums..."
+        "notesPlaceholder": "E.g., Metal try-in required..."
       },
       "logistics": {
         "dueDate": "Requested Date",
@@ -137,14 +191,13 @@
       "actions": {
         "next": "Next",
         "back": "Back",
-        "submit": "Submit Order",
-        "submitting": "Submitting..."
+        "submit": "Submit Order"
       }
     },
     "Files": {
       "uploadTitle": "Upload Files",
-      "dragDrop": "Drag & drop STL/PLY files here or click to upload",
-      "maxSize": "Max 50MB per file",
+      "dragDrop": "Drag & drop STL/PLY files here",
+      "maxSize": "Max 50MB",
       "uploading": "Uploading...",
       "success": "Uploaded"
     }

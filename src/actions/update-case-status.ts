@@ -1,56 +1,31 @@
 'use server';
 
-import { auth } from '@/auth';
 import { db } from '@/lib/db';
+import { auth } from '@/auth'; // Auth import etmeyi unutma
 import { revalidatePath } from 'next/cache';
 
-export async function updateCaseStatus(caseId: string, newStatus: string) {
+export async function updateCaseStatus(caseId: string, status: string) {
     const session = await auth();
-    if (!session?.user || !session.user.tenantId) {
-        return { success: false, message: 'Unauthorized' };
-    }
+    if (!session) throw new Error("Unauthorized");
 
-    const { tenantId, id: userId, role } = session.user;
+    // GÜVENLİK KONTROLÜ:
+    // Eğer LAB_ADMIN ise: Sadece ID ile güncelle (Herkesi yönetebilir)
+    // Eğer DENTIST ise: ID + TenantID ile güncelle (Sadece kendi vakasını)
 
-    // RBAC Checks
-    if (role === 'DENTIST' && newStatus === 'COMPLETED') {
-        return { success: false, message: 'Dentists cannot mark cases as COMPLETED.' };
-    }
+    const whereClause = session.user.role === 'LAB_ADMIN'
+        ? { id: caseId }
+        : { id: caseId, tenantId: session.user.tenantId };
 
     try {
-        // Verify ownership/access first
-        const existingCase = await db.case.findFirst({
-            where: { id: caseId, tenantId }
+        await db.case.update({
+            where: whereClause,
+            data: { status }
         });
 
-        if (!existingCase) {
-            return { success: false, message: 'Case not found' };
-        }
-
-        const oldStatus = existingCase.status;
-
-        // Transaction: Update Case + Create Audit Log
-        await db.$transaction([
-            db.case.update({
-                where: { id: caseId },
-                data: { status: newStatus }
-            }),
-            db.auditLog.create({
-                data: {
-                    caseId,
-                    userId,
-                    action: 'STATUS_CHANGE',
-                    details: `${oldStatus} -> ${newStatus}`
-                }
-            })
-        ]);
-
-        revalidatePath('/portal/cases');
         revalidatePath(`/portal/cases/${caseId}`);
-        return { success: true, message: 'Status updated successfully' };
-
+        return { success: true };
     } catch (error) {
-        console.error("Update Status Error:", error);
-        return { success: false, message: 'Failed to update status' };
+        console.error("Status Update Error:", error);
+        throw new Error("İşlem başarısız oldu. Yetkiniz olmayabilir.");
     }
 }

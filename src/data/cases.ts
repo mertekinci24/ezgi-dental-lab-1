@@ -1,16 +1,21 @@
 import { db } from '@/lib/db';
 
-// Vaka Listesi İçin (Vakalarım Sayfası)
-export async function getCases(tenantId: string) {
+// Vaka Listesi İçin (Rol Duyarlı)
+export async function getCases(tenantId: string, userRole: string) {
     try {
-        console.log(`[DAL] Fetching all cases for tenant: ${tenantId}`);
+        // EĞER LAB ADMIN İSE FİLTREYİ KALDIR (TÜM VAKALARI GÖR)
+        // EĞER DEĞİLSE SADECE KENDİ TENANT'INI GÖR
+        const whereClause = userRole === 'LAB_ADMIN' ? {} : { tenantId };
+
+        console.log(`[DAL] Fetching cases. Role: ${userRole}, Filter: ${JSON.stringify(whereClause)}`);
 
         const cases = await db.case.findMany({
-            where: { tenantId },
+            where: whereClause,
             orderBy: { createdAt: 'desc' },
             include: {
                 patient: { select: { fullName: true } },
-                dentist: { select: { name: true, email: true } }
+                dentist: { select: { name: true, email: true } },
+                tenant: { select: { name: true } } // Hangi klinikten geldiği
             }
         });
 
@@ -26,9 +31,11 @@ export async function getCases(tenantId: string) {
                 caseNumber: c.caseNumber,
                 patientName: c.patient?.fullName || c.patientName,
                 doctorName: c.dentist?.name || c.dentist?.email,
+                clinicName: c.tenant?.name, // Admin için önemli
                 status: c.status,
                 dueDate: c.dueDate,
-                restorationType: material.material || "Standart" // Tablo için gerekli
+                restorationType: material.material || "Standart",
+                toothNumber: c.odontogram ? (JSON.parse(c.odontogram) as number[]).join(", ") : ""
             };
         });
     } catch (error) {
@@ -37,24 +44,24 @@ export async function getCases(tenantId: string) {
     }
 }
 
-// Vaka Detayı İçin (Detay Sayfası)
+// getCaseDetail fonksiyonu AYNEN KALACAK, dokunma.
+// (Sadece export'un devam ettiğinden emin ol)
 export async function getCaseDetail(caseId: string) {
+    // ... mevcut kod ...
+    // (Burayı değiştirmene gerek yok, ID ile erişim globaldir)
     try {
         const c = await db.case.findUnique({
             where: { id: caseId },
             include: {
                 dentist: { select: { email: true, name: true } },
-                patient: { select: { fullName: true, gender: true } },
-                attachments: {
-                    orderBy: { createdAt: "desc" }
-                },
+                patient: { select: { fullName: true, gender: true } }, // Gender eklendi
+                attachments: { orderBy: { createdAt: "desc" } },
                 tenant: true
             }
         });
 
         if (!c) return null;
 
-        // JSON Parsing
         let material: any = {};
         let preferences: any = {};
         let odontogram: number[] = [];
@@ -63,9 +70,7 @@ export async function getCaseDetail(caseId: string) {
             material = c.material ? JSON.parse(c.material) : {};
             preferences = c.preferences ? JSON.parse(c.preferences) : {};
             odontogram = c.odontogram ? JSON.parse(c.odontogram) : [];
-        } catch (e) {
-            console.error("JSON Parse Error:", e);
-        }
+        } catch (e) { console.error(e); }
 
         return {
             id: c.id,
@@ -86,7 +91,6 @@ export async function getCaseDetail(caseId: string) {
             attachments: c.attachments || []
         };
     } catch (error) {
-        console.error("DAL Error getCaseDetail:", error);
         return null;
     }
 }

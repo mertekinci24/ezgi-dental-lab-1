@@ -1,78 +1,68 @@
 import { db } from '@/lib/db';
 
 export type DashboardStats = {
-    active: number;
-    completed: number;
-    pending: number;
+    activeCases: number;
+    completedCases: number;
+    pendingActions: number;
 };
 
-export type RecentCase = {
-    id: string;
-    caseNumber: number;
-    patientName: string;
-    status: string;
-    dueDate: Date;
-};
+export async function getDashboardStats(tenantId: string, userRole: string): Promise<DashboardStats> {
+    // DEBUG LOG (Sunucu konsolunda görünecek)
+    console.log(`[DASHBOARD] Stats requested. Tenant: ${tenantId}, Role: ${userRole}`);
 
-export async function getDashboardStats(tenantId: string): Promise<DashboardStats> {
-    console.log(`[DAL] Dashboard Stats Fetching for Tenant: ${tenantId}`);
+    // Admin ise TÜM sistemi gör, değilse sadece kendi tenant'ını
+    const whereClause = userRole === 'LAB_ADMIN' ? {} : { tenantId };
 
-    // Example mapping:
-    // Active: RECEIVED, DESIGN, PRODUCTION
-    // Completed: SHIPPED, COMPLETED
-    // Pending: DRAFT, ON_HOLD
+    console.log(`[DASHBOARD] Where Clause: ${JSON.stringify(whereClause)}`);
 
-    const activeCount = await db.case.count({
-        where: {
-            tenantId,
-            status: { in: ['SUBMITTED', 'RECEIVED', 'DESIGN', 'PRODUCTION'] }
-        }
-    });
+    try {
+        const activeCount = await db.case.count({
+            where: {
+                ...whereClause,
+                status: { in: ['SUBMITTED', 'RECEIVED', 'DESIGN', 'PRODUCTION'] }
+            }
+        });
 
-    const completedCount = await db.case.count({
-        where: {
-            tenantId,
-            status: { in: ['SHIPPED', 'COMPLETED'] }
-        }
-    });
+        const completedCount = await db.case.count({
+            where: {
+                ...whereClause,
+                status: 'COMPLETED'
+            }
+        });
 
-    const pendingCount = await db.case.count({
-        where: {
-            tenantId,
-            status: { in: ['DRAFT', 'ON_HOLD'] }
-        }
-    });
+        const pendingCount = await db.case.count({
+            where: {
+                ...whereClause,
+                status: 'SUBMITTED'
+            }
+        });
 
-    return {
-        active: activeCount,
-        completed: completedCount,
-        pending: pendingCount
-    };
+        console.log(`[DASHBOARD] Results - Active: ${activeCount}, Completed: ${completedCount}`);
+
+        return {
+            activeCases: activeCount,
+            completedCases: completedCount,
+            pendingActions: pendingCount
+        };
+    } catch (error) {
+        console.error("[DASHBOARD] Error fetching stats:", error);
+        return { activeCases: 0, completedCases: 0, pendingActions: 0 };
+    }
 }
 
-export async function getRecentCases(tenantId: string): Promise<RecentCase[]> {
-    console.log(`[DAL] Recent Cases Fetching for Tenant: ${tenantId}`);
+// getRecentCases fonksiyonunu da aynı mantıkla güncelle (Log ekle)
+export async function getRecentCases(tenantId: string, userRole: string) {
+    const whereClause = userRole === 'LAB_ADMIN' ? {} : { tenantId };
 
-    const cases = await db.case.findMany({
-        where: { tenantId },
-        orderBy: { createdAt: 'desc' },
+    console.log(`[DASHBOARD] Recent Cases requested. Role: ${userRole}`);
+
+    return await db.case.findMany({
+        where: whereClause,
         take: 5,
+        orderBy: { createdAt: 'desc' },
         include: {
-            patient: {
-                select: { fullName: true }
-            }
+            patient: { select: { fullName: true } },
+            tenant: { select: { name: true } } // Admin için klinik adı
         }
     });
-
-    return cases.map(c => ({
-        id: c.id,
-        caseNumber: c.caseNumber,
-        patientName: c.patient?.fullName || c.patientName,
-        status: c.status,
-        dueDate: c.dueDate,
-        // JSON Parsing (Even if not used in table, good for DTO consistency)
-        odontogram: c.odontogram ? JSON.parse(c.odontogram) : [],
-        material: c.material ? JSON.parse(c.material) : {},
-        preferences: c.preferences ? JSON.parse(c.preferences) : {}
-    }));
 }

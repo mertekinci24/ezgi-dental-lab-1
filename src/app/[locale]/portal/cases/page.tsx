@@ -24,7 +24,7 @@ export default async function CasesPage({ searchParams }: Props) {
     // const status = typeof params.status === 'string' ? params.status : undefined;
     // const search = typeof params.search === 'string' ? params.search : undefined;
 
-    const cases = await getCases(session.user.tenantId);
+    const cases = await getCases(session.user.tenantId, session.user.role);
 
     return (
         <div className="min-h-screen bg-black p-8">

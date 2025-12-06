@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { Plus, Package, CheckCircle, Clock, Activity } from 'lucide-react';
@@ -19,8 +21,11 @@ export default async function PortalDashboard({ params }: Props) {
         return <div className="text-white">Unauthorized: No Tenant ID</div>;
     }
 
-    const stats = await getDashboardStats(session.user.tenantId);
-    const recentCases = await getRecentCases(session.user.tenantId);
+    console.log("Session Role in Page:", session?.user?.role); // Log ekle
+
+    const stats = await getDashboardStats(session.user.tenantId, session.user.role);
+    console.log("[UI DEBUG] Stats passed to render:", stats);
+    const recentCases = await getRecentCases(session.user.tenantId, session.user.role);
 
     return (
         <div className="min-h-screen bg-zinc-950 p-8">
@@ -48,21 +53,21 @@ export default async function PortalDashboard({ params }: Props) {
                             <h3 className="text-zinc-400 font-medium">{t('activeCases')}</h3>
                             <Package className="w-6 h-6 text-blue-500" />
                         </div>
-                        <p className="text-4xl font-bold text-zinc-100">{stats.active}</p>
+                        <p className="text-4xl font-bold text-zinc-100">{stats.activeCases}</p>
                     </div>
                     <div className="bg-zinc-900 p-6 rounded-xl shadow-sm border border-zinc-800">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-zinc-400 font-medium">{t('completedCases')}</h3>
                             <CheckCircle className="w-6 h-6 text-green-500" />
                         </div>
-                        <p className="text-4xl font-bold text-green-500">{stats.completed}</p>
+                        <p className="text-4xl font-bold text-green-500">{stats.completedCases}</p>
                     </div>
                     <div className="bg-zinc-900 p-6 rounded-xl shadow-sm border border-zinc-800">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-zinc-400 font-medium">{t('pendingActions')}</h3>
                             <Clock className="w-6 h-6 text-orange-500" />
                         </div>
-                        <p className="text-4xl font-bold text-orange-500">{stats.pending}</p>
+                        <p className="text-4xl font-bold text-orange-500">{stats.pendingActions}</p>
                     </div>
                 </div>
 
@@ -103,7 +108,7 @@ export default async function PortalDashboard({ params }: Props) {
                             ${c.status === 'DESIGN' ? 'bg-blue-900/30 text-blue-400 border border-blue-800' :
                                                         c.status === 'PRODUCTION' ? 'bg-orange-900/30 text-orange-400 border border-orange-800' :
                                                             'bg-green-900/30 text-green-400 border border-green-800'}`}>
-                                                    {c.status}
+                                                    {t(`statusMap.${c.status}`)}
                                                 </span>
                                             </Link>
                                         </td>
